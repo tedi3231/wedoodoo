@@ -64,7 +64,7 @@ RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
 # makes the container more unlikely to be unwillingly changed in interactive mode
 USER odoo
 
-RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo,additional_addons,data}" && \
+RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources,additional_addons,data}" && \
     cd /opt/odoo/sources/ && \
     tar xzf /opt/odoo/odoo.tar.gz && \
 	mv odoo-8.0-20160126 odoo
