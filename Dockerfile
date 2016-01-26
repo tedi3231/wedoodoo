@@ -65,9 +65,9 @@ RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
 USER odoo
 
 RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo,additional_addons,data}" && \
-    cd /opt/odoo/sources/odoo && \
-        tar xzf /opt/odoo/odoo.tar.gz &&\
-        rm /opt/odoo/odoo.tar.gz
+    cd /opt/odoo/sources/ && \
+        tar xzf /opt/odoo/odoo.tar.gz
+#rm /opt/odoo/odoo.tar.gz
 
 RUN /bin/bash -c "mkdir -p /opt/odoo/var/{run,log,egg-cache}"
 
