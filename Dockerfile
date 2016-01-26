@@ -67,7 +67,7 @@ USER odoo
 RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo,additional_addons,data}" && \
     cd /opt/odoo/sources/ && \
     tar xzf /opt/odoo/odoo.tar.gz && \
-	mv /opt/odoo/sources/odoo-8.0-20160126 /opt/odoo/sources/odoo
+	mv odoo-8.0-20160126 odoo
 RUN ls /opt/odoo/sources
 RUN ls /opt/odoo/
 #rm /opt/odoo/odoo.tar.gz
@@ -81,7 +81,7 @@ WORKDIR /app
 VOLUME ["/opt/odoo/var", "/opt/odoo/etc", "/opt/odoo/additional_addons", "/opt/odoo/data","/opt/odoo/sources"]
 # Set the default entrypoint (non overridable) to run when starting the container
 # ENTRYPOINT ["/app/bin/boot"]
-ENTRYPOINT ["/bin/bash"]
+# ENTRYPOINT ["/bin/bash"]
 # CMD ["help"]
 # Expose the odoo ports (for linked containers)
 EXPOSE 8069 8072
