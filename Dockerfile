@@ -56,7 +56,7 @@ RUN adduser --home=/opt/odoo --disabled-password --gecos "" --shell=/bin/bash od
 # ADD an URI always gives 600 permission with UID:GID 0 => need to chmod accordingly
 # /!\ carefully select the source archive depending on the version
 # ADD https://wheelhouse.xcg.io/odoo/odoo8.tgz /opt/odoo/odoo.tgz
-ADD http://nightly.odoo.com/8.0/nightly/src/odoo_8.0.latest.tar.gz /opt/odoo/odoo.tar.gz
+ADD http://nightly.odoo.com/8.0/nightly/src/odoo_8.0.20160126.tar.gz /opt/odoo/odoo.tar.gz
 # RUN echo "1df8d5a3ec29f83435340f46e771157d70b719ac789976a575ba2697078c68c3 /opt/odoo/odoo.tgz" | sha256sum -c -
 RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
 
@@ -66,7 +66,8 @@ USER odoo
 
 RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo,additional_addons,data}" && \
     cd /opt/odoo/sources/ && \
-    tar xzf /opt/odoo/odoo.tar.gz
+    tar xzf /opt/odoo/odoo.tar.gz && \
+	mv /opt/odoo/sources/odoo-8.0-20160126 /opt/odoo/sources/odoo
 RUN ls /opt/odoo/sources
 RUN ls /opt/odoo/
 #rm /opt/odoo/odoo.tar.gz
